@@ -18,6 +18,13 @@
     "autoload": {
         "psr-4": {
             "Xorth\\GoToUrl\\": "src/"
-        }
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "require-dev": {
+        "mockery/mockery": "dev-master",
+        "phpunit/phpunit": "^5.7"
     }
 }

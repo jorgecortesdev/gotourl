@@ -29,7 +29,7 @@ class GoToUrl
     public function now()
     {
         if ($this->session->has($this->sessionKey)) {
-            return redirect($this->session->get($this->sessionKey));
+            return $this->redirect->redirect($this->session->get($this->sessionKey));
         }
     }
 
