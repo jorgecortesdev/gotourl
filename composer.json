@@ -1,0 +1,23 @@
+{
+    "name": "jcortes/gotourl",
+    "description": "Go to an expecific url through session for Laravel",
+    "license": "MIT",
+    "keywords": ["laravel", "redirector"],
+    "authors": [
+        {
+            "name": "Jorge Cortes",
+            "email": "jorge.cortes@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "^5.4",
+        "illuminate/session": "^5.4",
+        "illuminate/routing": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xorth\\GoToUrl\\": "src/"
+        }
+    }
+}
