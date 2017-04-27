@@ -7,7 +7,7 @@ if ( ! function_exists('go')) {
         $go = app(Xorth\GoToUrl\GoToUrl::class);
 
         if ( ! is_null($url)) {
-            return $go->to($url);
+            return $go->after($url);
         }
 
         return $go;
