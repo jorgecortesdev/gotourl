@@ -8,6 +8,6 @@ class Go extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'gotourl';
+        return GoToUrl::class;
     }
 }

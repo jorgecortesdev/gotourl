@@ -25,11 +25,21 @@ class GoToUrlServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('gotourl', function() {
+        $this->app->singleton(Xorth\GoToUrl\GoToUrl::class, function() {
             $session  = $this->app->make('Illuminate\Session\Store');
             $redirect = $this->app->make('Illuminate\Routing\Redirector');
 
             return new Xorth\GoToUrl($session, $redirect);
         });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [Xorth\GoToUrl\GoToUrl::class];
     }
 }
