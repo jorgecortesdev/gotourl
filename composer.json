@@ -1,5 +1,5 @@
 {
-    "name": "jcortes/gotourl",
+    "name": "xorth/gotourl",
     "description": "Go to an expecific url through session for Laravel",
     "license": "MIT",
     "keywords": ["laravel", "redirector"],
@@ -11,16 +11,16 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "illuminate/support": "^5.1",
-        "illuminate/session": "^5.1",
-        "illuminate/routing": "^5.1"
+        "illuminate/support": "^5.3",
+        "illuminate/session": "^5.3",
+        "illuminate/routing": "^5.3"
     },
     "autoload": {
         "psr-4": {
-            "Xorth\\GoToUrl\\": "src/"
+            "Xorth\\GoToUrl\\": "src/Xorth/GoToUrl"
         },
         "files": [
-            "src/functions.php"
+            "src/Xorth/GoToUrl/functions.php"
         ]
     },
     "require-dev": {
