@@ -22,7 +22,7 @@ class GoToUrlTest extends PHPUnit_Framework_TestCase
         $this->session->shouldReceive('forget')->with('GoToUrl');
         $this->session->shouldReceive('put')->with('GoToUrl', '/dummy/url');
 
-        $this->go->to('/dummy/url');
+        $this->go->after('/dummy/url');
     }
 
     /** @test */
@@ -32,7 +32,7 @@ class GoToUrlTest extends PHPUnit_Framework_TestCase
         $this->session->shouldReceive('put')->with('GoToUrl', '/dummy/url');
         $this->session->shouldReceive('has')->with('GoToUrl')->andReturn(true);
         $this->session->shouldReceive('get')->with('GoToUrl')->andReturn('/dummy/url');
-        $this->redirect->shouldReceive('redirect')->with('/dummy/url')->andReturn($this->redirect);
+        $this->redirect->shouldReceive('to')->with('/dummy/url')->andReturn($this->redirect);
 
         $this->go->now();
     }

@@ -17,7 +17,7 @@ class GoToUrl
         $this->redirect = $redirect;
     }
 
-    public function to($url)
+    public function after($url)
     {
         $this->flush();
 
@@ -29,7 +29,7 @@ class GoToUrl
     public function now()
     {
         if ($this->session->has($this->sessionKey)) {
-            return $this->redirect->redirect($this->session->get($this->sessionKey));
+            return $this->redirect->to($this->session->get($this->sessionKey));
         }
     }
 
