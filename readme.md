@@ -37,7 +37,7 @@ Within your controllers, before you perform a save, edit or delete action, make 
 ```php
 public function create()
 {
-    go()->after(); // Get the full url throgh $request->fullUrl()
+    go()->after(); // Get the full url through $request->fullUrl()
 
     // do more stuff
 }
