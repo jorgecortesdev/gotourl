@@ -37,7 +37,7 @@ Within your controllers, before you perform a save, edit or delete action, make 
 ```php
 public function create()
 {
-    go('/something/to/show');
+    go()->after(); // Get the full url throgh $request->fullUrl()
 
     // do more stuff
 }
@@ -54,8 +54,9 @@ public function save()
 
 You may also do:
 
-- `go()->to('/something/to/show`
-- `Go::to('/something/to/show`: Only if the facade was registered.
+- `go('/something/to/show')`
+- `go()->after('/something/to/show')`
+- `Go::after('/something/to/show`: Only if the facade was registered.
 - `Go::now()`: Only if the facade was registered.
 
 This can be pretty useful if you save, update or delete something in different parts of your app.
