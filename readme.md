@@ -1,5 +1,9 @@
 # GoToUrl for your laravel App
 
+[![Latest Stable Version](https://poser.pugx.org/xorth/gotourl/v/stable)](https://packagist.org/packages/xorth/gotourl)
+[![Latest Unstable Version](https://poser.pugx.org/xorth/gotourl/v/unstable)](https://packagist.org/packages/xorth/gotourl)
+[![License](https://poser.pugx.org/xorth/gotourl/license)](https://packagist.org/packages/xorth/gotourl)
+
 This composer package offers an easy redirector for your laravel 5.3 applications.
 
 ## Installation
