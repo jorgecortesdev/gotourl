@@ -26,10 +26,10 @@ class GoToUrlServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(Xorth\GoToUrl\GoToUrl::class, function() {
-            $session  = $this->app->make('Illuminate\Session\Store');
-            $redirect = $this->app->make('Illuminate\Routing\Redirector');
+            $request  = request();
+            $redirect = redirect();
 
-            return new Xorth\GoToUrl($session, $redirect);
+            return new Xorth\GoToUrl($request, $redirect);
         });
     }
 
