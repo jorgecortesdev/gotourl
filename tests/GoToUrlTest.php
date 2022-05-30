@@ -1,47 +1,54 @@
 <?php
 
+namespace Xorth\GoToUrl\Tests;
+
+use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use Mockery\MockInterface;
 use Xorth\GoToUrl\GoToUrl;
-use Mockery as m;
 
-class GoToUrlTest extends PHPUnit_Framework_TestCase
+class GoToUrlTest extends TestCase
 {
-    protected $go;
-    protected $request;
-    protected $redirect;
-
-    public function setUp()
-    {
-        $this->request  = m::mock('Illuminate\Http\Request');
-        $this->redirect = m::mock('Illuminate\Routing\Redirector');
-        $this->go       = new GoToUrl($this->request, $this->redirect);
-    }
-
     /** @test */
-    public function it_recieve_a_dummy_url()
+    public function it_receive_a_dummy_url()
     {
-        $this->request->shouldReceive('session')->withNoArgs()->andReturnUsing(function () {
-            $session = m::mock('Illuminate\Session\Storage');
-            $session->shouldReceive('forget')->with('GoToUrl');
-            $session->shouldReceive('put')->with('GoToUrl', '/dummy/url');
-            return $session;
+        $request = $this->partialMock(Request::class, function (MockInterface $mock) {
+            $mock->shouldReceive('session')
+                ->withNoArgs()
+                ->andReturnUsing(function () {
+                    return $this->mock('Illuminate\Session\Storage', function (MockInterface $mock) {
+                        $mock->shouldReceive('forget')->with('GoToUrl');
+                        $mock->shouldReceive('put')->with('GoToUrl', '/dummy/url');
+                    });
+                });
         });
 
-        $this->go->after('/dummy/url');
+        /** @var Request $request */
+        (new GoToUrl($request, redirect()))->after('/dummy/url');
     }
 
     /** @test */
     public function it_return_a_redirector_object()
     {
-        $this->request->shouldReceive('session')->withNoArgs()->andReturnUsing(function () {
-            $session = m::mock('Illuminate\Session\Storage');
-            $session->shouldReceive('forget')->with('GoToUrl');
-            $session->shouldReceive('put')->with('GoToUrl', '/dummy/url');
-            $session->shouldReceive('has')->with('GoToUrl')->andReturn(true);
-            $session->shouldReceive('get')->with('GoToUrl')->andReturn('/dummy/url');
-            return $session;
+        $request = $this->partialMock(Request::class, function (MockInterface $mock) {
+            $mock->shouldReceive('session')
+                ->withNoArgs()
+                ->andReturnUsing(function () {
+                    return $this->mock('Illuminate\Session\Storage', function (MockInterface $mock) {
+                        $mock->shouldReceive('has')->with('GoToUrl')->andReturn(true);
+                        $mock->shouldReceive('get')->with('GoToUrl')->andReturn('/dummy/url');
+                    });
+                });
         });
-        $this->redirect->shouldReceive('to')->with('/dummy/url')->andReturn($this->redirect);
 
-        $this->go->now();
+        $redirect = $this->partialMock(Redirector::class, function (MockInterface $mock) {
+            $mock->shouldReceive('to')->with('/dummy/url');
+        });
+
+        /**
+         * @var Request $request
+         * @var Redirector $redirect
+         */
+        (new GoToUrl($request, $redirect))->now();
     }
 }

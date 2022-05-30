@@ -26,7 +26,7 @@ You can register the Go facade in the aliases key of your `config/app.php` file 
 
 ```php
 'aliases' => [
-    'Go' => Xorth\GoToUrl\Go::class,
+    'Go' => \Go::class,
 ];
 ```
 
